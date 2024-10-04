@@ -6,14 +6,14 @@
 <body>
     <h1>Welcome to QuantumPitch!</h1>
     <p>This is the first deployment.</p>
+    <form action="/submit-proposal" method="POST">
+        <label for="title">Proposal Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="abstract">Proposal Abstract:</label><br>
+        <textarea id="abstract" name="abstract" rows="4" cols="50" required></textarea><br><br>
+        
+        <button type="submit">Submit Proposal</button>
+    </form>
 </body>
 </html>
-<form action="/submit-proposal" method="POST">
-   <label for="title">Proposal Title:</label>
-   <input type="text" id="title" name="title" required><br><br>
-   
-   <label for="abstract">Proposal Abstract:</label><br>
-   <textarea id="abstract" name="abstract" rows="4" cols="50" required></textarea><br><br>
-   
-   <button type="submit">Submit Proposal</button>
-</form>
