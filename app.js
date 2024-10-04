@@ -38,9 +38,9 @@ app.post('/submit-proposal', async (req, res) => {
             .query('INSERT INTO Proposals (Title, Abstract, Status) VALUES (@Title, @Abstract, @Status)');
         res.send('Proposal submitted successfully!');
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Error submitting proposal');
-    }
+    console.error('Error details:', err);  // Log the specific error
+    res.status(500).send('Error submitting proposal: ' + err.message);
+}
 });
 
 // Start the server
