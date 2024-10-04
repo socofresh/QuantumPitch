@@ -19,10 +19,11 @@ app.get('/', (req, res) => {
 const config = {
     user: 'socofresh',  // Your SQL username
     password: 'S0c0fr3sh!2024', // Your password
-    server: 'quantumpitchserver.database.windows.net',
-    database: 'QuantumPitchDB',
+    server: 'quantumpitchserver.database.windows.net', // Your server name
+    database: 'QuantumPitchDB', // Your database name
     options: {
-        encrypt: true // Use encryption for Azure SQL databases
+        encrypt: true, // Use encryption for Azure SQL databases
+        trustServerCertificate: false, // Change to true if needed
     }
 };
 
