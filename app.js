@@ -1,5 +1,5 @@
 // NASA API endpoint for heliophysics data
-const apiKey = 'YOUR_NASA_API_KEY';  // Replace this with your NASA API key
+const apiKey = '6wiGrWUj6AYes062xQU26jFIVEvtAI9CZ3U3duFM';  // Replace this with your NASA API key
 const apiURL = `https://heliophysicsdata.gsfc.nasa.gov/WS/hdp/1/Spase/MeasurementType`;
 
 fetch(apiURL)
