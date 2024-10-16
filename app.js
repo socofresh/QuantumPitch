@@ -1,24 +1,21 @@
-// NASA API endpoint for heliophysics data
-const apiKey = '6wiGrWUj6AYes062xQU26jFIVEvtAI9CZ3U3duFM';  // Replace this with your NASA API key
-const apiURL = `https://heliophysicsdata.gsfc.nasa.gov/WS/hdp/1/Spase/MeasurementType`;
+// NASA API endpoint for MeasurementType data
+const apiURL = 'https://heliophysicsdata.gsfc.nasa.gov/WS/hdp/1/Spase/MeasurmentType';
 
 fetch(apiURL)
-  .then(response => response.json())  // Parses the response as JSON
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.text(); // NASA's API may return XML, so let's parse it as text
+  })
   .then(data => {
-    console.log('NASA Data:', data);  // Log the data in the console (for testing)
-    
-    // Get the div where the data will be displayed
+    console.log('NASA Data:', data);
     const output = document.getElementById('data-output');
     
-    // Display some data (e.g., measurement types)
-    data.forEach(item => {
-      let p = document.createElement('p');
-      p.textContent = `Measurement Type: ${item.MeasurementType}`;
-      output.appendChild(p);
-    });
+    // For now, we will simply display the raw response data
+    output.textContent = data;
   })
   .catch(error => {
-    console.error('Error fetching NASA data:', error);
+    console.error('There has been a problem with your fetch operation:', error);
   });
-
 
