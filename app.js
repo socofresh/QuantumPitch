@@ -1,5 +1,5 @@
 // NASA API endpoint for MeasurementType data
-const apiURL = 'https://heliophysicsdata.gsfc.nasa.gov/WS/hdp/1/Spase/MeasurmentType';
+const apiURL = 'https://heliophysicsdata.gsfc.nasa.gov/WS/hdp/1/Spase/MeasurementType';
 
 fetch(apiURL)
   .then(response => {
