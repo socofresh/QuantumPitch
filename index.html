@@ -27,6 +27,7 @@
       border-bottom: 1px solid white;
       font-size: 16px;
       padding: 10px;
+      margin-bottom: 10px;
     }
     .response {
       margin-top: 20px;
@@ -39,10 +40,32 @@
 <body>
   <div class="console">
     <h1>Innoviv Command Line Interface</h1>
-    <input type="text" id="user-input" placeholder="Enter your question...">
+    <input type="text" id="user-input" placeholder="Enter your question..." onkeydown="if(event.key === 'Enter') askQuestion()">
     <div id="data-output" class="response"></div>
   </div>
-  <script src="app.js"></script>
+  
+  <script>
+    async function askQuestion() {
+      const question = document.getElementById('user-input').value;
+      const responseDiv = document.getElementById('data-output');
+      responseDiv.innerHTML = 'Processing...'; // Show a loading message
+
+      try {
+        const response = await fetch('http://localhost:3000/ask', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ question }),
+        });
+
+        const data = await response.json();
+        responseDiv.innerHTML = data.results || 'No relevant information found.';
+      } catch (error) {
+        responseDiv.innerHTML = 'Error retrieving data. Please try again.';
+        console.error('Error:', error);
+      }
+    }
+  </script>
 </body>
 </html>
-
